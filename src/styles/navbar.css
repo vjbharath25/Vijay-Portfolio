@@ -1,0 +1,117 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: var(--nav-h);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar--scrolled {
+  border-bottom-color: var(--line);
+  box-shadow: 0 4px 18px rgba(20, 33, 61, 0.06);
+}
+
+.navbar__inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar__logo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.35rem;
+  letter-spacing: 0.04em;
+  color: var(--navy);
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  border: 2px solid var(--gold);
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.navbar__logo:hover {
+  background: var(--gold);
+  color: var(--white);
+}
+
+.navbar__menu {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.navbar__menu a {
+  display: block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  color: var(--charcoal);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.navbar__menu a:hover {
+  color: var(--blue);
+  background: var(--blue-soft);
+}
+
+.navbar__menu a.is-active {
+  color: var(--gold-dark);
+  background: var(--gold-soft);
+  font-weight: 600;
+}
+
+.navbar__toggle {
+  display: none;
+  background: none;
+  border: 0;
+  font-size: 1.4rem;
+  color: var(--navy);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+@media (max-width: 880px) {
+  .navbar__toggle {
+    display: block;
+  }
+
+  .navbar__menu {
+    position: absolute;
+    top: var(--nav-h);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    padding: 12px 24px 20px;
+    background: var(--white);
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 16px 30px rgba(20, 33, 61, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+  }
+
+  .navbar__menu.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .navbar__menu a {
+    padding: 12px 14px;
+    border-radius: 10px;
+  }
+}
